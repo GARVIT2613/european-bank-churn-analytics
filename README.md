@@ -191,8 +191,8 @@ The application will be available locally at **`http://localhost:8501`**.
 | Deliverable | Location / Link |
 |---|---|
 | **Live Streamlit App** | (https://european-bank-churnanalytics.streamlit.app/) |
-| **Full Research Paper** | [`docs/research_paper.md`](docs/research_paper.md) |
-| **Executive Summary (Board Briefing)** | [`docs/executive_summary.md`](docs/executive_summary.md) |
+| **Full Research Paper** | [`docs/research_paper.pdf`](docs/research_paper.pdf) |
+| **Executive Summary (Board Briefing)** | [`docs/executive_summary.pdf`](docs/executive_summary.pdf) |
 
 ---
 
