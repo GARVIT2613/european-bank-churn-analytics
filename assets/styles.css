@@ -1,0 +1,304 @@
+/* Custom CSS for KPI cards, metric pills, and tab styling */
+
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Base Font & Rendering */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light dark;
+
+    /* Classic Enterprise Theme (Default Light) */
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #ffffff;
+    --bg-surface-subtle: #f1f5f9;
+    --border-color: #e2e8f0;
+    --border-subtle: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+
+    /* Theme 1: Executive Overview Accent Tokens */
+    --executive-primary: #2563eb;
+    --executive-primary-soft: #eff6ff;
+    --executive-accent: #d97706;
+    --executive-accent-soft: #fffbeb;
+
+    /* Theme 2: Analytics & Funnel Accent Tokens */
+    --analytics-primary: #6366f1;
+    --analytics-primary-soft: #eef2ff;
+    --analytics-accent: #10b981;
+    --analytics-accent-soft: #ecfdf5;
+
+    /* Theme 3: Finance & Revenue Accent Tokens */
+    --finance-primary: #059669;
+    --finance-primary-soft: #ecfdf5;
+    --finance-accent: #0284c7;
+    --finance-accent-soft: #f0f9ff;
+
+    /* Theme 4: Operations & Tasks Accent Tokens */
+    --ops-primary: #7c3aed;
+    --ops-primary-soft: #f5f3ff;
+    --ops-accent: #ea580c;
+    --ops-accent-soft: #fff7ed;
+
+    /* Theme 5: System Health & Infrastructure Accent Tokens */
+    --system-primary: #0891b2;
+    --system-primary-soft: #ecfeff;
+    --system-accent: #e11d48;
+    --system-accent-soft: #fff1f2;
+
+    /* Chart Palettes - Light Mode */
+    --chart-1: #2563eb; /* Cobalt Blue */
+    --chart-2: #10b981; /* Emerald Green */
+    --chart-3: #f59e0b; /* Amber */
+    --chart-4: #8b5cf6; /* Purple */
+    --chart-5: #06b6d4; /* Cyan */
+    --chart-6: #f43f5e; /* Rose */
+    --chart-7: #64748b; /* Slate */
+    --chart-8: #d946ef; /* Fuchsia */
+  }
+
+  /* Dark Theme Variables */
+  .dark, [data-theme="dark"] {
+    --bg-page: #090d16;
+    --bg-surface: #111827;
+    --bg-surface-elevated: #1e293b;
+    --bg-surface-subtle: #0f172a;
+    --border-color: #1f2937;
+    --border-subtle: #172033;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+
+    /* Dark Chart Palettes (High Contrast & Vibrancy) */
+    --chart-1: #3b82f6;
+    --chart-2: #34d399;
+    --chart-3: #fbbf24;
+    --chart-4: #a78bfa;
+    --chart-5: #22d3ee;
+    --chart-6: #fb7185;
+    --chart-7: #94a3b8;
+    --chart-8: #e879f9;
+  }
+}
+
+/* ==========================================================================
+   1. Dashboard Page Backgrounds & Gradients
+   ========================================================================== */
+
+/* Classic Dot Grid Background */
+.bg-dot-grid-light {
+  background-color: #f8fafc;
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-dot-grid-dark {
+  background-color: #0b0f19;
+  background-image: radial-gradient(#1e293b 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* Technical Graph Grid Background */
+.bg-graph-grid-light {
+  background-color: #fafbfc;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-graph-grid-dark {
+  background-color: #0b1120;
+  background-image: 
+    linear-gradient(to right, rgba(30, 41, 59, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 59, 0.5) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Page-Specific Attractive Mesh Backgrounds */
+
+/* 1. Executive Dashboard Mesh */
+.bg-mesh-executive {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(217, 119, 6, 0.06) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.04) 0px, transparent 50%);
+}
+
+.dark .bg-mesh-executive {
+  background-color: #070b14;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(217, 119, 6, 0.12) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
+}
+
+/* 2. Analytics Dashboard Mesh */
+.bg-mesh-analytics {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.08) 0px, transparent 45%),
+    radial-gradient(at 90% 15%, rgba(16, 185, 129, 0.07) 0px, transparent 50%),
+    radial-gradient(at 50% 90%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
+}
+
+.dark .bg-mesh-analytics {
+  background-color: #080a14;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.16) 0px, transparent 45%),
+    radial-gradient(at 90% 15%, rgba(16, 185, 129, 0.14) 0px, transparent 50%),
+    radial-gradient(at 50% 90%, rgba(139, 92, 246, 0.1) 0px, transparent 50%);
+}
+
+/* 3. Finance & Revenue Dashboard Mesh */
+.bg-mesh-finance {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 5% 5%, rgba(5, 150, 105, 0.08) 0px, transparent 45%),
+    radial-gradient(at 95% 10%, rgba(2, 132, 199, 0.07) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+}
+
+.dark .bg-mesh-finance {
+  background-color: #060e12;
+  background-image: 
+    radial-gradient(at 5% 5%, rgba(5, 150, 105, 0.16) 0px, transparent 45%),
+    radial-gradient(at 95% 10%, rgba(2, 132, 199, 0.14) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+}
+
+/* 4. Operations & Pipeline Dashboard Mesh */
+.bg-mesh-ops {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 15%, rgba(124, 58, 237, 0.08) 0px, transparent 45%),
+    radial-gradient(at 100% 20%, rgba(234, 88, 12, 0.07) 0px, transparent 50%),
+    radial-gradient(at 40% 90%, rgba(168, 85, 247, 0.05) 0px, transparent 50%);
+}
+
+.dark .bg-mesh-ops {
+  background-color: #0b0716;
+  background-image: 
+    radial-gradient(at 0% 15%, rgba(124, 58, 237, 0.16) 0px, transparent 45%),
+    radial-gradient(at 100% 20%, rgba(234, 88, 12, 0.13) 0px, transparent 50%),
+    radial-gradient(at 40% 90%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
+}
+
+/* 5. System Infrastructure & Logs Dashboard Mesh */
+.bg-mesh-system {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(8, 145, 178, 0.08) 0px, transparent 45%),
+    radial-gradient(at 90% 10%, rgba(225, 29, 72, 0.06) 0px, transparent 45%),
+    radial-gradient(at 50% 90%, rgba(6, 182, 212, 0.05) 0px, transparent 50%);
+}
+
+.dark .bg-mesh-system {
+  background-color: #050e14;
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(8, 145, 178, 0.16) 0px, transparent 45%),
+    radial-gradient(at 90% 10%, rgba(225, 29, 72, 0.13) 0px, transparent 45%),
+    radial-gradient(at 50% 90%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+}
+
+/* ==========================================================================
+   2. Card Surfaces & Elevation Utilities
+   ========================================================================== */
+
+.surface-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+
+.dark .surface-card {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.surface-glass {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.dark .surface-glass {
+  background-color: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(31, 41, 55, 0.8);
+}
+
+/* ==========================================================================
+   3. Status & Visual Badges
+   ========================================================================== */
+
+.badge-success {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+.dark .badge-success {
+  background-color: rgba(6, 95, 70, 0.25);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-warning {
+  background-color: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+.dark .badge-warning {
+  background-color: rgba(146, 64, 14, 0.25);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-danger {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+.dark .badge-danger {
+  background-color: rgba(153, 27, 27, 0.25);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-info {
+  background-color: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+.dark .badge-info {
+  background-color: rgba(30, 64, 175, 0.25);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* ==========================================================================
+   4. Custom Clean Data Table & Log Scrollbars
+   ========================================================================== */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
